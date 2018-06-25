@@ -1,0 +1,35 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Donate Author Post\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-06-25 10:18+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/"
+
+#: class.donation.php:13
+msgid "Donate Author"
+msgstr ""
+
+#. Name of the plugin
+msgid "Donate Author Post"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://tonvin.xyz"
+msgstr ""
+
+#. Description of the plugin
+msgid "Reader can donate to author while like the post."
+msgstr ""
+
+#. Author of the plugin
+msgid "Tonvin Tian<itonvin@gmail.com>"
+msgstr ""
