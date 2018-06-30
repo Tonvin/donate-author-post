@@ -1,17 +1,15 @@
 (function($) {
     $(window).load(function () {
-        'use strict';
-        if ( 1 == $('#donate-author-post').length ) {
-			$('#donate-author-post').show();
-			$('#donate-author-post').click(async function(){
-				let url = '/wp-json/donate-author-post/pay';
-				try {
-					let response = await fetch(url);
-					return await response.text();
-				} catch (e) {
-					return e.message;
-				}
-			});
+        if ( $('.donate-author-post').length > 0 ) {
+			$('.donate-author-post').each(function(){
+                $(this).show();
+                $(this).click(async function(){
+                    let url = '/wp-json/donate-author-post/page';
+                    let response = await fetch(url);
+                    let text = await response.text();
+                    $("body").append(text);
+                });
+            });
 		}
 	});
 }(jQuery));

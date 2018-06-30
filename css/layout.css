@@ -1,10 +1,57 @@
-#donate-author-post {
+.donate-author-post {
     text-align:center;
     width:100%;
 }
 
-#donate-author-post button{
+.donate-author-post button{
     display:inline-block;
     border-radius: 1px;
     margin:auto;
+}
+
+
+#donate-author-post {
+    position: fixed;
+    left:0;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index:1001;
+    -moz-opacity: 0.8;
+    opacity:.80;
+    filter: alpha(opacity=80);
+    border:1px solid red;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-align-content: stretch;
+    -ms-flex-line-pack: stretch;
+    align-content: stretch;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+#donate-author-post div{
+    width:360px;
+    height:360px;
+    background:#fff;
+    padding:1rem;
+}
+
+#donate-author-post p{
+    text-align:center;
+    font-size:2rem;
+    font-weight:800;
 }
