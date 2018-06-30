@@ -20,13 +20,15 @@ class Donation {
 	public  function page() {
         $html = '';
         $pay['wechat']['title'] = '微信';
-        $pay['wechat']['html'] = '<img src=http://tonvin.one234.xyz/images/pay/wechat.jpg />';
+        $pay['wechat']['html'] = '<img src=http://tonvin.one234.xyz/images/pay/wechat1.png />';
         $pay['alipay']['title'] = '支付宝';
-        $pay['alipay']['html'] = '<img src=http://tonvin.one234.xyz/images/pay/alipay.jpg />';
+        $pay['alipay']['html'] = '<img src=http://tonvin.one234.xyz/images/pay/alipay1.jpg />';
         foreach ( $pay as $p ) {
             $html .= '<div><p>'.$p['title'].'</p><p>'.$p['html'].'</p></div>';
         }
-        $html = '<div id=donate-author-post>'.$html.'</div>';
+        //close button
+        $html .= '<span class=dap-close title="close"><svg viewbox="0 0 40 40"><path class="dap-close-x" d="M 10,10 L 30,30 M 30,10 L 10,30" /></svg></span>';
+        $html = '<div id=donate-author-post__wrapper><div id=donate-author-post>'.$html.'</div></div>';
         echo $html;
     }
 
