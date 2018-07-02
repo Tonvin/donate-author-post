@@ -3,18 +3,20 @@ namespace DonateAuthorPost;
 class Donation {
 
 	public   function __construct() {
-        $this->register_rest_route();
-		add_filter( 'the_content', array($this, 'append_donation_button' ), 10, 2 );
         wp_register_style( 'donation-author-post.css', plugin_dir_url( __FILE__ ) . 'css/layout.css', array());       
         wp_enqueue_style( 'donation-author-post.css');
         wp_register_script( 'donation-author-post.js', plugin_dir_url( __FILE__ ) . 'js/donate.js', array('jquery'));
         wp_enqueue_script( 'donation-author-post.js' );
+        $this->register_rest_route();
+		add_filter( 'the_content', array($this, 'show_donation' ), 10, 2 );
     }
 
-	public  function append_donation_button($content) {
-        load_plugin_textdomain( 'donate-author-post', false, basename(__DIR__).'/languages');
-        $html = '<p class=donate-author-post style="display:none;"><button>'.__('Donate Author', 'donate-author-post').'</button></p>';
-        return $content.$html;
+	public  function show_donation($content) {
+        if ( is_single() ) {
+            load_plugin_textdomain( 'donate-author-post', false, basename(__DIR__).'/languages');
+            $html = '<p class=donate-author-post style="display:none;"><button>'.__('Donate Author', 'donate-author-post').'</button></p>';
+            return $content.$html;
+        }
     }
 
 	public  function page() {

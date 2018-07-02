@@ -35,7 +35,8 @@
     align-items: center;
 }
 
-#donate-author-post{
+#donate-author-post {
+    margin-top:30px;
     position:relative;
     display: -ms-flexbox;
     display: -webkit-flex;
@@ -55,6 +56,8 @@
     -webkit-align-items: center;
     -ms-flex-align: center;
     align-items: center;
+    overflow:auto;
+    max-height:95%;
 }
 
 #donate-author-post div{
