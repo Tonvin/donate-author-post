@@ -11,5 +11,8 @@ if ( !function_exists( 'add_action' ) ) {
 	exit;
 }
 require_once('class.donation.php');
+require_once('class.setting.php');
 use DonateAuthorPost\Donation;
+use DonateAuthorPost\Setting;
 new Donation();
+new Setting();
