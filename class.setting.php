@@ -19,35 +19,77 @@ class Setting {
     }
 
     public function show_options_page() {
-        $section = '';
-        if ( isset($_GET['section']) && $_GET['section'] ) {
-            $section = $_GET['section'];
-        } else {
-            $section = '';
-        }
-        $tabs = array('channels', 'auth');
-        if ( !in_array($section, $tabs)) {
-            $section = $tabs[0];
+        $tab = $_GET['tab'];
+        if ( isset($_POST['_wpnonce']) && $_POST['_wpnonce'] ) {
+            $tab = $this->save_channel();
+            //$this->show_page('pay');
         }
 
+        $options = get_option('donate_author_post');
+        $tabs = array_keys($options);
+        if ( in_array($tab, $tabs)) {
+            $pay = $options[$tab];
+        } else {
+            $tab = 'new';
+        }
+        
+        $section = strval($_GET['section']);
+        $sections = array('channels');
+        if ( !in_array($section, $sections)) {
+            $section = $sections[0];
+        }
+
+        /*
+        */
+
+        /*
         $class['param'] = '';
         $class['auth'] = '';
         if ( $section == 'channels' ) {
             $class['param'] = 'nav-tab-active';
-            $this->save_param();
             $options = array();
             $options['type'] = '';
             $options = get_option('donate_author_post');
         }
+         */
+        ?>
+        <?php
+        include_once "pages/layout.php";
         ?>
         <div class="wrap">
             <h2 class='nav-tab-wrapper'>
                 <a href='?page=donate-author-post-settings&section=channels' class='nav-tab <?php echo $class['param'];?>'>Channels</a>
             </h2>
+            <div class="tabs">
+<?php
+        if ( is_array($options) ) {
+            foreach ( $options as $k=>$v ) {
+                if ( $k == $tab ) {
+                    echo "<span>$k</span>";
+                } else {
+                    echo "<span><a href='?page=donate-author-post-settings&section=channels&tab=".$k."'>".$k."</a></span>";
+                }
+                echo "&nbsp;&nbsp;|";
+            }
+        }
+?>
+<?php
+                if ( 'new' == $tab ) {
+                    echo "<span>New+</span>";
+                } else {
+                    echo "<span><a href='?page=donate-author-post-settings&section=channels&tab=new'>New+</a></span>";
+                }
+?>
+            </div>
         </div>
         <?php
         if ( $section == 'channels' ) {
-            $this->show_channels_page($options);
+            if ( $tab == 'new' ) {
+                include_once "pages/new.php";
+            } else {
+                include_once "pages/pay.php";
+            }
+            //$this->show_channels_page($options);
         }
     }
 
@@ -77,11 +119,42 @@ class Setting {
                     $jspush = sanitize_text_field($_POST['jspush']);
                     $options['jspush'] = $jspush;
                 }
-                update_option('donate_author_post_param', $options);
+                update_option('donate_author_post', $options);
                 echo '<div id="message" class="updated fade"><p><strong>';
                 echo '保存成功';
                 echo '</strong></p></div>';
             }
+        }           
+
+    public function save_channel() {
+                $option = array();
+                $option['name'] = '';
+                $option['note'] = '';
+                $option['display'] = '';
+                $nonce = $_POST['_wpnonce'];
+                if (!wp_verify_nonce($nonce, 'donate_author_post')) {
+                    wp_die('Error! Nonce Security Check Failed! please save the settings again.');
+                }
+                if(isset($_POST['name']) && !empty($_POST['name'])){
+                    $name= sanitize_text_field($_POST['name']);
+                    $option['name'] = $name;
+                }
+                if(isset($_POST['note']) && !empty($_POST['note'])){
+                    $note= sanitize_text_field($_POST['note']);
+                    $option['note'] = $note;
+                }
+                if(isset($_POST['display']) && !empty($_POST['display'])){
+                    $display= sanitize_text_field($_POST['display']);
+                    $option['display'] = $display;
+                }
+                $options = get_option('donate_author_post');
+                $options[$name] = $option;
+                update_option('donate_author_post', $options);
+                /*
+                echo '<div id="message" class="updated fade"><p><strong>';
+                echo 'Add success.';
+                echo '</strong></p></div>';
+                */
         }           
 
         public function save_auth() {
@@ -109,6 +182,10 @@ class Setting {
 
     public function show_channels_page($options) {
         include_once 'pages/channels.php';
+    }
+
+    public function show_pay_page($tab) {
+        include_once "pages/$tab.php";
     }
 
 }
