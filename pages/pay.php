@@ -30,5 +30,9 @@
 </tbody>
 
 </table>
-<p class="submit"><input type="submit" class="button button-primary" value="Add"></p>
+<p class="submit">
+    <input type="submit" class="pay-update" value="Update">
+&nbsp;&nbsp;&nbsp;
+    <input type="submit" class="pay-delete" value="Delete">
+</p>
 </form>

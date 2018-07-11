@@ -57,19 +57,18 @@ class Setting {
         include_once "pages/layout.php";
         ?>
         <div class="wrap">
-            <h2 class='nav-tab-wrapper'>
+            <h1 class='nav-tab-wrapper'>
                 <a href='?page=donate-author-post-settings&section=channels' class='nav-tab <?php echo $class['param'];?>'>Channels</a>
-            </h2>
+            </h1>
             <div class="tabs">
 <?php
         if ( is_array($options) ) {
             foreach ( $options as $k=>$v ) {
                 if ( $k == $tab ) {
-                    echo "<span>$k</span>";
+                    echo "<span class=current>$k</span>";
                 } else {
                     echo "<span><a href='?page=donate-author-post-settings&section=channels&tab=".$k."'>".$k."</a></span>";
                 }
-                echo "&nbsp;&nbsp;|";
             }
         }
 ?>
@@ -150,6 +149,7 @@ class Setting {
                 $options = get_option('donate_author_post');
                 $options[$name] = $option;
                 update_option('donate_author_post', $options);
+                return $name;
                 /*
                 echo '<div id="message" class="updated fade"><p><strong>';
                 echo 'Add success.';
