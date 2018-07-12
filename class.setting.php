@@ -19,39 +19,45 @@ class Setting {
     }
 
     public function show_options_page() {
-        $tab = $_GET['tab'];
+        $act = $_POST['act'];
+        if ( !in_array($act, array('delete', 'update', 'insert'))) {
+            $act = false;
+        }
         if ( isset($_POST['_wpnonce']) && $_POST['_wpnonce'] ) {
-            $tab = $this->save_channel();
-            //$this->show_page('pay');
+            $nonce = $_POST['_wpnonce'];
+            if (!wp_verify_nonce($nonce, 'donate_author_post')) {
+                wp_die('Error! Nonce Security Check Failed! please save the settings again.');
+            }
+
+            if ( $act == 'update' ) {
+                $tab = $this->update_channel();
+            } elseif ( $act == 'insert' ) {
+                $tab = $this->insert_channel();
+            } elseif ( $act == 'delete' ) {
+                $this->delete_channel();
+                $tab = null;
+            }
+        } else {
+            $tab = $_GET['tab'];
         }
 
         $options = get_option('donate_author_post');
-        $tabs = array_keys($options);
-        if ( in_array($tab, $tabs)) {
+        if ( $options ) {
+            $tabs = array_keys($options);
+            if ( $tab == '' ) {
+                $tab = $tabs[0];
+            }
             $pay = $options[$tab];
         } else {
             $tab = 'new';
         }
+
         
         $section = strval($_GET['section']);
         $sections = array('channels');
         if ( !in_array($section, $sections)) {
             $section = $sections[0];
         }
-
-        /*
-        */
-
-        /*
-        $class['param'] = '';
-        $class['auth'] = '';
-        if ( $section == 'channels' ) {
-            $class['param'] = 'nav-tab-active';
-            $options = array();
-            $options['type'] = '';
-            $options = get_option('donate_author_post');
-        }
-         */
         ?>
         <?php
         include_once "pages/layout.php";
@@ -65,9 +71,9 @@ class Setting {
         if ( is_array($options) ) {
             foreach ( $options as $k=>$v ) {
                 if ( $k == $tab ) {
-                    echo "<span class=current>$k</span>";
+                    echo "<span class=current>".$v['name']."</span>";
                 } else {
-                    echo "<span><a href='?page=donate-author-post-settings&section=channels&tab=".$k."'>".$k."</a></span>";
+                    echo "<span><a href='?page=donate-author-post-settings&section=channels&tab=".$k."'>".$v['name']."</a></span>";
                 }
             }
         }
@@ -92,47 +98,41 @@ class Setting {
         }
     }
 
-    public function save_param() {
-            if ( isset($_POST['_wpnonce']) && $_POST['_wpnonce'] ) {
-                $options = array();
-                $options['site'] = '';
-                $options['token'] = '';
-                $options['type'] = '';
-                $nonce = $_POST['_wpnonce'];
-                if (!wp_verify_nonce($nonce, 'donate_author_post_param')) {
-                    wp_die('Error! Nonce Security Check Failed! please save the settings again.');
-                }
-                if(isset($_POST['site']) && !empty($_POST['site'])){
-                    $site= sanitize_text_field($_POST['site']);
-                    $options['site'] = $site;
-                }
-                if(isset($_POST['token']) && !empty($_POST['token'])){
-                    $token= sanitize_text_field($_POST['token']);
-                    $options['token'] = $token;
-                }
-                if(isset($_POST['type']) && !empty($_POST['type'])){
-                    $type = sanitize_text_field($_POST['type']);
-                    $options['type'] = $type;
-                }
-                if(isset($_POST['jspush']) && !empty($_POST['jspush'])){
-                    $jspush = sanitize_text_field($_POST['jspush']);
-                    $options['jspush'] = $jspush;
-                }
-                update_option('donate_author_post', $options);
-                echo '<div id="message" class="updated fade"><p><strong>';
-                echo '保存成功';
-                echo '</strong></p></div>';
-            }
-        }           
-
-    public function save_channel() {
+    public function insert_channel() {
                 $option = array();
                 $option['name'] = '';
                 $option['note'] = '';
                 $option['display'] = '';
-                $nonce = $_POST['_wpnonce'];
-                if (!wp_verify_nonce($nonce, 'donate_author_post')) {
-                    wp_die('Error! Nonce Security Check Failed! please save the settings again.');
+                if(isset($_POST['name']) && !empty($_POST['name'])){
+                    $name= sanitize_text_field($_POST['name']);
+                    $option['name'] = $name;
+                }
+                if(isset($_POST['note']) && !empty($_POST['note'])){
+                    $note= sanitize_text_field($_POST['note']);
+                    $option['note'] = $note;
+                }
+                if(isset($_POST['display']) && !empty($_POST['display'])){
+                    $display= sanitize_text_field($_POST['display']);
+                    $option['display'] = $display;
+                }
+                if ( $option['name'] ) {
+                    $options = get_option('donate_author_post');
+                    $tab = substr(uniqid(), -6);
+                    $options[$tab] = $option;
+                    update_option('donate_author_post', $options);
+                    return $tab;
+                }
+                return 'new';
+    }
+
+
+    public function update_channel() {
+                $option = array();
+                $option['name'] = '';
+                $option['note'] = '';
+                $option['display'] = '';
+                if(isset($_POST['pay_id']) && !empty($_POST['pay_id'])){
+                    $pay_id= sanitize_text_field($_POST['pay_id']);
                 }
                 if(isset($_POST['name']) && !empty($_POST['name'])){
                     $name= sanitize_text_field($_POST['name']);
@@ -147,14 +147,21 @@ class Setting {
                     $option['display'] = $display;
                 }
                 $options = get_option('donate_author_post');
-                $options[$name] = $option;
+                $options[$pay_id] = $option;
                 update_option('donate_author_post', $options);
-                return $name;
-                /*
-                echo '<div id="message" class="updated fade"><p><strong>';
-                echo 'Add success.';
-                echo '</strong></p></div>';
-                */
+                return $pay_id;
+        }           
+
+    public function delete_channel() {
+                if(isset($_POST['pay_id']) && !empty($_POST['pay_id'])){
+                    $pay_id= sanitize_text_field($_POST['pay_id']);
+                }
+                $options = get_option('donate_author_post');
+                if ( isset($options[$pay_id]) ) {
+                    unset($options[$pay_id]);
+                }
+                update_option('donate_author_post', $options);
+                return true;
         }           
 
         public function save_auth() {

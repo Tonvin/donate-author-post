@@ -20,8 +20,8 @@
 <th scope="row"><label for="display">Display:</label></th>
 <td>
 <select name="display" id="display">
-<option value='original' <?php echo selected( $options['display'], '', false);?>>Yes</option>
-<option value='' <?php echo selected( $options['display'], 'no', false);?>>No</option>
+<option value='yes' <?php echo selected( $options['display'], 'yes', false);?>>Yes</option>
+<option value='no' <?php echo selected( $options['display'], 'no', false);?>>No</option>
 </select>
 </td>
 </tr>
@@ -31,4 +31,5 @@
 
 </table>
 <p class="submit"><input type="submit" class="button button-primary" value="Add"></p>
+<input type=hidden name=act value="insert"/>
 </form>

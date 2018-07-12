@@ -20,19 +20,23 @@
 <th scope="row"><label for="display">Display:</label></th>
 <td>
 <select name="display" id="display">
-<option value='original' <?php echo selected( $pay['display'], '', false);?>>Yes</option>
-<option value='' <?php echo selected( $pay['display'], 'no', false);?>>No</option>
+<option value='yes' <?php echo selected( $pay['display'], 'yes', false);?>>Yes</option>
+<option value='no' <?php echo selected( $pay['display'], 'no', false);?>>No</option>
 </select>
 </td>
 </tr>
-
-
 </tbody>
-
 </table>
-<p class="submit">
-    <input type="submit" class="pay-update" value="Update">
-&nbsp;&nbsp;&nbsp;
+<p><input type="submit" class="pay-update" value="Update"></p>
+<input type=hidden name=pay_id value="<?php echo $tab;?>"/>
+<input type=hidden name=act value=update />
+</form>
+
+<form method="post" action="<?php echo $_SERVER["REQUEST_URI"]; ?>">
+<?php wp_nonce_field('donate_author_post'); ?>
+<p>
     <input type="submit" class="pay-delete" value="Delete">
 </p>
+<input type=hidden name=pay_id value="<?php echo $tab;?>"/>
+<input type=hidden name=act value=delete />
 </form>
