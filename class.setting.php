@@ -48,6 +48,7 @@ class Setting {
                 $tab = $tabs[0];
             }
             $pay = $options[$tab];
+            $pay['note'] = stripslashes($pay['note']);
         } else {
             $tab = 'new';
         }
@@ -139,7 +140,7 @@ class Setting {
                     $option['name'] = $name;
                 }
                 if(isset($_POST['note']) && !empty($_POST['note'])){
-                    $note= sanitize_text_field($_POST['note']);
+                    $note= $_POST['note'];
                     $option['note'] = $note;
                 }
                 if(isset($_POST['display']) && !empty($_POST['display'])){

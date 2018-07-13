@@ -21,11 +21,18 @@ class Donation {
     }
 
 	public  function page() {
+
+        $options = get_option('donate_author_post');
+        if ( $options ) {
+            foreach ( $options as $key=>$option ) {
+                if ( $option['display'] == 'yes' ) {
+                    $pay[$key]['title'] = $option['name'];
+                    $pay[$key]['html'] = stripslashes($option['note']);
+                }
+
+            }
+        }
         $html = '';
-        $pay['wechat']['title'] = '微信';
-        $pay['wechat']['html'] = '<img src=http://tonvin.one234.xyz/images/pay/wechat1.png />';
-        $pay['alipay']['title'] = '支付宝';
-        $pay['alipay']['html'] = '<img src=http://tonvin.one234.xyz/images/pay/alipay1.jpg />';
         foreach ( $pay as $p ) {
             $html .= '<div><p>'.$p['title'].'</p><p>'.$p['html'].'</p></div>';
         }

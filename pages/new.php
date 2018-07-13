@@ -12,7 +12,14 @@
 <tr valign="top">
 <th scope="row"><label for="note">Pay Note:</label></th>
 <td>
-<input name="note" type="text" value="<?php echo $options['note']; ?>" class="regular-text code">
+<?php
+wp_editor($options['note'], 'donate_author_post_channel_note', 
+array(
+'textarea_name'=>'note',
+'textarea_rows'=>12,
+'wpautop'=>true
+));
+?>
 </td>
 </tr>
 
