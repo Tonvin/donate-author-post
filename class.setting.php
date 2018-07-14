@@ -109,7 +109,7 @@ class Setting {
                     $option['name'] = $name;
                 }
                 if(isset($_POST['note']) && !empty($_POST['note'])){
-                    $note= sanitize_text_field($_POST['note']);
+                    $note= $_POST['note'];
                     $option['note'] = $note;
                 }
                 if(isset($_POST['display']) && !empty($_POST['display'])){
