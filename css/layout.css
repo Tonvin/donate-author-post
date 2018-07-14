@@ -3,6 +3,10 @@
     width:100%;
 }
 
+.donate-author-post p{ 
+    margin:0;
+}
+
 .donate-author-post button{
     display:inline-block;
     border-radius: 1px;

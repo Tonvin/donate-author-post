@@ -3,10 +3,10 @@ namespace DonateAuthorPost;
 class Donation {
 
 	public   function __construct() {
-        wp_register_style( 'donation-author-post.css', plugin_dir_url( __FILE__ ) . 'css/layout.css', array());       
-        wp_enqueue_style( 'donation-author-post.css');
-        wp_register_script( 'donation-author-post.js', plugin_dir_url( __FILE__ ) . 'js/donate.js', array('jquery'));
-        wp_enqueue_script( 'donation-author-post.js' );
+        wp_register_style( 'donation-author-post', plugin_dir_url( __FILE__ ) . 'css/layout.css', array());       
+        wp_enqueue_style( 'donation-author-post');
+        wp_register_script( 'donation-author-post', plugin_dir_url( __FILE__ ) . 'js/donate.js', array('jquery'));
+        wp_enqueue_script( 'donation-author-post' );
         $this->register_rest_route();
 		add_filter( 'the_content', array($this, 'show_donation' ), 10, 2 );
     }
