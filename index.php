@@ -10,9 +10,10 @@ if ( !function_exists( 'add_action' ) ) {
 	echo 'Called directly denied';
 	exit;
 }
-require_once('class.donation.php');
-require_once('class.setting.php');
+require_once('donation.php');
+require_once('setting.php');
 use DonateAuthorPost\Donation;
 use DonateAuthorPost\Setting;
+load_plugin_textdomain( 'donate-author-post', false, basename(__DIR__).'/languages');
 new Donation();
 new Setting();

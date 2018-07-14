@@ -13,7 +13,6 @@ class Donation {
 
 	public  function show_donation($content) {
         if ( is_single() ) {
-            load_plugin_textdomain( 'donate-author-post', false, basename(__DIR__).'/languages');
             $html = '<p class=donate-author-post style="display:none;"><button>'.__('Donate Author', 'donate-author-post').'</button></p>';
             return $content.$html;
         }

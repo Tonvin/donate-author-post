@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Donate Author Post\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-25 10:18+0000\n"
+"POT-Creation-Date: 2018-07-14 02:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -14,16 +14,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/"
 
-#: class.donation.php:13
+#: donation.php:17
 msgid "Donate Author"
+msgstr ""
+
+#: setting.php:12
+msgid "Setting"
 msgstr ""
 
 #. Name of the plugin
 msgid "Donate Author Post"
-msgstr ""
-
-#. Author URI of the plugin
-msgid "https://tonvin.xyz"
 msgstr ""
 
 #. Description of the plugin
@@ -32,4 +32,8 @@ msgstr ""
 
 #. Author of the plugin
 msgid "Tonvin Tian<itonvin@gmail.com>"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://tonvin.xyz"
 msgstr ""

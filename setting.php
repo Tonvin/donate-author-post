@@ -8,8 +8,8 @@ class Setting {
     }
 
     public function add_plugin_action_links($links, $file) {
-        if ($file == plugin_basename(dirname(__FILE__) . '/main.php')) {
-            $links[] = '<a href="options-general.php?page=donate-author-post-settings&section=param">Setting</a>';
+        if ($file == plugin_basename(dirname(__FILE__) . '/index.php')) {
+            $links[] = '<a href="options-general.php?page=donate-author-post-settings&section=channels">'.__('Setting', 'donate-author-post').'</a>';
         }
         return $links;
     }

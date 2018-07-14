@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Donate Author Post\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-25 08:56+0000\n"
-"PO-Revision-Date: 2018-06-25 08:58+0000\n"
+"POT-Creation-Date: 2018-07-14 02:09+0000\n"
+"PO-Revision-Date: 2018-07-14 02:10+0000\n"
 "Language-Team: 简体中文\n"
 "Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
@@ -13,10 +13,14 @@ msgstr ""
 "X-Generator: Loco https://localise.biz/\n"
 "Last-Translator: 管理员 <neo@wordpressmatrix.com>"
 
-#: class.donation.php:13
+#: donation.php:17
 #, fuzzy
 msgid "Donate Author"
 msgstr "赞赏"
+
+#: setting.php:12
+msgid "Setting"
+msgstr "设置"
 
 #. Name of the plugin
 msgid "Donate Author Post"
