@@ -3,14 +3,14 @@
 <table class="form-table">
 <tbody> 
 <tr valign="top">
-<th scope="row"><label for="name">Pay Name:</label></th>
+<th scope="row"><label for="name"><?php echo __('Pay Name', 'donate-author-post');?>:</label></th>
 <td>
 <input name="name" type="text" value="<?php echo $pay['name']; ?>" class="regular-text code">
 </td>
 </tr>
 
 <tr valign="top">
-<th scope="row"><label for="note">Pay Note:</label></th>
+<th scope="row"><label for="note"><?php echo __('Pay Note', 'donate-author-post');?>:</label></th>
 <td>
 <?php
 wp_editor($pay['note'], 'donate_author_post_new_channel_note', 
@@ -24,17 +24,17 @@ array(
 </tr>
 
 <tr>
-<th scope="row"><label for="display">Display:</label></th>
+<th scope="row"><label for="display"><?php echo __('Display', 'donate-author-post');?>:</label></th>
 <td>
 <select name="display" id="display">
-<option value='yes' <?php echo selected( $pay['display'], 'yes', false);?>>Yes</option>
-<option value='no' <?php echo selected( $pay['display'], 'no', false);?>>No</option>
+<option value='yes' <?php echo selected( $pay['display'], 'yes', false);?>><?php echo __('Yes', 'donate-author-post');?></option>
+<option value='no' <?php echo selected( $pay['display'], 'no', false);?>><?php echo __('No', 'donate-author-post');?></option>
 </select>
 </td>
 </tr>
 </tbody>
 </table>
-<p><input type="submit" class="pay-update" value="Update"></p>
+<p><input type="submit" class="pay-update" value="<?php echo __('Update', 'donate-author-post');?>"></p>
 <input type=hidden name=pay_id value="<?php echo $tab;?>"/>
 <input type=hidden name=act value=update />
 </form>
@@ -42,7 +42,7 @@ array(
 <form method="post" action="<?php echo $_SERVER["REQUEST_URI"]; ?>">
 <?php wp_nonce_field('donate_author_post'); ?>
 <p>
-    <input type="submit" class="pay-delete" value="Delete">
+    <input type="submit" class="pay-delete" value="<?php echo __('Delete', 'donate-author-post');?>">
 </p>
 <input type=hidden name=pay_id value="<?php echo $tab;?>"/>
 <input type=hidden name=act value=delete />

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Donate Author Post\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-14 02:09+0000\n"
-"PO-Revision-Date: 2018-07-14 02:10+0000\n"
+"POT-Creation-Date: 2018-07-17 00:19+0000\n"
+"PO-Revision-Date: 2018-07-17 00:19+0000\n"
 "Language-Team: 简体中文\n"
 "Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
@@ -13,7 +13,7 @@ msgstr ""
 "X-Generator: Loco https://localise.biz/\n"
 "Last-Translator: 管理员 <neo@wordpressmatrix.com>"
 
-#: donation.php:17
+#: donation.php:16
 #, fuzzy
 msgid "Donate Author"
 msgstr "赞赏"
@@ -23,8 +23,49 @@ msgid "Setting"
 msgstr "设置"
 
 #. Name of the plugin
+#: setting.php:18
 msgid "Donate Author Post"
 msgstr "打赏作者"
+
+#: setting.php:68
+msgid "Channels"
+msgstr "渠道"
+
+#: setting.php:84
+msgid "New"
+msgstr "新增"
+
+#: pages/new.php:6 pages/pay.php:6
+msgid "Pay Name"
+msgstr "渠道名称"
+
+#: pages/new.php:13 pages/pay.php:13
+msgid "Pay Note"
+msgstr "打赏方式"
+
+#: pages/new.php:27 pages/pay.php:27
+msgid "Display"
+msgstr "显示"
+
+#: pages/new.php:31 pages/pay.php:30
+msgid "Yes"
+msgstr "是"
+
+#: pages/new.php:32 pages/pay.php:31
+msgid "No"
+msgstr "否"
+
+#: pages/new.php:42
+msgid "Add"
+msgstr "添加"
+
+#: pages/pay.php:37
+msgid "Update"
+msgstr "更新"
+
+#: pages/pay.php:45
+msgid "Delete"
+msgstr "删除"
 
 #. Description of the plugin
 msgid "Reader can donate to author while like the post."

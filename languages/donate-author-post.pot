@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Donate Author Post\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-14 02:09+0000\n"
+"POT-Creation-Date: 2018-07-17 00:19+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/"
 
-#: donation.php:17
+#: donation.php:16
 msgid "Donate Author"
 msgstr ""
 
@@ -23,7 +23,48 @@ msgid "Setting"
 msgstr ""
 
 #. Name of the plugin
+#: setting.php:18
 msgid "Donate Author Post"
+msgstr ""
+
+#: setting.php:68
+msgid "Channels"
+msgstr ""
+
+#: setting.php:84
+msgid "New"
+msgstr ""
+
+#: pages/new.php:6 pages/pay.php:6
+msgid "Pay Name"
+msgstr ""
+
+#: pages/new.php:13 pages/pay.php:13
+msgid "Pay Note"
+msgstr ""
+
+#: pages/new.php:27 pages/pay.php:27
+msgid "Display"
+msgstr ""
+
+#: pages/new.php:31 pages/pay.php:30
+msgid "Yes"
+msgstr ""
+
+#: pages/new.php:32 pages/pay.php:31
+msgid "No"
+msgstr ""
+
+#: pages/new.php:42
+msgid "Add"
+msgstr ""
+
+#: pages/pay.php:37
+msgid "Update"
+msgstr ""
+
+#: pages/pay.php:45
+msgid "Delete"
 msgstr ""
 
 #. Description of the plugin

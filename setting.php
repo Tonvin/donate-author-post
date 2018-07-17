@@ -15,7 +15,7 @@ class Setting {
     }
 
     public function add_options_menu() {
-        add_options_page('Donate Author Post', 'Donate Author Post', 'manage_options', 'donate-author-post-settings', array($this, 'show_options_page'));
+        add_options_page(__('Donate Author Post', 'donate-author-post'), __('Donate Author Post', 'donate-author-post'), 'manage_options', 'donate-author-post-settings', array($this, 'show_options_page'));
     }
 
     public function show_options_page() {
@@ -65,7 +65,7 @@ class Setting {
         ?>
         <div class="wrap">
             <h1 class='nav-tab-wrapper'>
-                <a href='?page=donate-author-post-settings&section=channels' class='nav-tab <?php echo $class['param'];?>'>Channels</a>
+            <a href='?page=donate-author-post-settings&section=channels' class='nav-tab <?php echo $class['param'];?>'><?php echo __('Channels', 'donate-author-post');?></a>
             </h1>
             <div class="tabs">
 <?php
@@ -81,7 +81,7 @@ class Setting {
 ?>
 <?php
                 if ( 'new' == $tab ) {
-                    echo "<span>New+</span>";
+                    echo "<span>".__('New', 'donate-author-post')."+</span>";
                 } else {
                     echo "<span><a href='?page=donate-author-post-settings&section=channels&tab=new'>New+</a></span>";
                 }
