@@ -2,18 +2,16 @@
 
 WordPress plugin for reader donate author.
 
-This Plugin was not support Internet Explorer.
-
 1) download this plugin into your WordPress plugin directory wp-content/plugins.
+
 2) Activate this plugin.
+
 3) Add new Pay channel,after your post content,there is a donate button that reader can donate author.
 
 
 # 打赏作者
 
 WordPress打赏插件，读者看到喜欢的文章，可以打赏作者。
-
-目前此插件不支持IE浏览器。
 
 使用方法：
 
