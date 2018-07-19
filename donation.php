@@ -38,7 +38,7 @@ class Donation {
         //close button
         $html .= '<span class=dap-close title="close"><svg viewbox="0 0 40 40"><path class="dap-close-x" d="M 10,10 L 30,30 M 30,10 L 10,30" /></svg></span>';
         $html = '<div id=donate-author-post__wrapper><div id=donate-author-post>'.$html.'</div></div>';
-        echo $html;
+        return array('html'=>$html);
     }
 
 
